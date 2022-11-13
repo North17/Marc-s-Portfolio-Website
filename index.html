@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="This is my first ever website">
+        <title>Marc's Site</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Open+Sans:wght@300;500;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+
+    </head>
+
+    <style>
+
+        :root{
+            --side-grad-left: linear-gradient(to left, #434343 0%, black 100%);
+            --side-grad-right: linear-gradient(to right, #434343 0%, black 100%);
+            --header-grad: linear-gradient(to right,  rgba(0,0,0,0.875) 0%, rgba(32, 32, 32, 0.75) 80%, rgba(15, 15, 15, 0) 100%);
+            --main-grad: linear-gradient(to left,  rgba(0,0,0,0.875) 0%, rgba(32, 32, 32, 0.75) 90%, rgba(15, 15, 15, 0) 100%);
+            --my-red: rgb(155, 0, 0);
+            --link-hover: rgb(201, 52, 52);
+            --link-visited: rgb(91, 3, 3);
+            --my-white: rgb(192, 192, 192);
+        }
+
+
+        body{
+            margin:0;
+            width: auto;
+            height: auto;
+            display: grid;
+
+            grid-template-columns: 3fr 14fr 3fr;
+            grid-template-rows: auto;
+
+            grid-template-areas: 
+                "side-left centre  side-right"
+                "side-left centre side-right";
+
+            ;
+
+        }
+
+        h1{
+            font-size: 4.5vw;
+        }
+
+        h3{
+            font-size: 2vw;
+        }
+
+        li:not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+        #centre-col{
+
+            box-shadow: 0px 0px 30px ;
+
+            grid-area: centre;
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: auto auto;
+
+            grid-template-areas: 
+                "header"
+                "main";
+        }
+
+        header{
+            
+            grid-area: header;
+            background-color: rgb(36,36,36);
+            background-image: var(--header-grad), url("outlinetile.svg");
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            grid-template-areas: 
+                "text profile";
+            
+        }        
+
+        main{
+            
+            grid-area: main;
+            background-color: rgb(36,36,36);
+            background-image: var(--main-grad), url("outlinetile.svg");
+            border-top: 1px solid var(--my-red);
+            margin: auto;
+            width: 96%;
+            min-height: 700px;
+            display: grid;
+            padding: 2%;
+
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: 
+                "- - top top top"
+                "mid mid mid o o"
+                "x x bot bot bot";
+            grid-gap: 2%;
+
+        }   
+        
+
+        #toptext{
+            
+            position: relative;
+            font-family: "Archivo";
+            font-size: xx-large;
+            color: transparent;
+            -webkit-text-stroke: 0.5px;
+            -webkit-text-stroke-color: white;
+            grid-area: text;
+            margin: 2%;
+            display: grid;
+            grid-template-rows: auto auto auto;
+            grid-template-areas: 
+                "Hi"
+                "Name"
+                "info";
+            bottom: 0;
+            left: 0;
+        }        
+
+        #toptext .headingcontainer{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
+        }   
+
+        .headings{
+            bottom: 0;
+            left: 0;
+            margin: 1%;
+            float: left;
+
+        }
+
+        #topprofile{
+
+            grid-area: profile;
+            display: flex;
+            align-items: flex-end;
+            padding: 5%;
+            background-color: transparent;
+        }
+
+        #my-img{
+            background-image: var(--header-grad);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            border-radius: 50%;
+            border: 2px solid var(--my-red);
+        }
+
+        .info-container{
+            color: white;
+            background-color: rgb(36,36,36);
+            box-shadow: 0px 0px 1px white;
+            border-radius: 10px 10px;
+            padding: 2%;
+        }
+
+        .info-container:hover{
+            outline: 1px solid var(--my-red);
+        }
+
+        #pers-backg{
+            grid-area: top;
+        }
+
+        #pers-edu{
+            grid-area: mid;
+        }
+
+        #pers-int{
+            grid-area: bot;
+        }
+
+        .red-text{
+            color: var(--my-red);
+            -webkit-text-stroke: 0px;
+        }
+
+        .blank-text{
+            color: var(--my-white);
+            -webkit-text-stroke: 0px;
+        }
+
+        .sub-heading-text{
+            font-family: "Archivo", sans-serif;
+            color: var(--my-red);
+            font-size: 1.75vw;
+        }
+
+        .body-text{
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15vw;
+            color: var(--my-white);
+        }
+        
+        .sides{
+            width: 100%;
+        }
+
+        #side-left{
+            grid-area: side-left;
+            background-image: url("bgtile.svg"), var(--side-grad-left);
+        }
+        #side-right{
+            grid-area: side-right;   
+            background-image: url("bgtile.svg"), var(--side-grad-right);
+        }
+
+
+        footer{
+            position: fixed;
+            bottom: 0;
+            margin: auto;
+            width: 70%;
+            height: 20px;
+            background-color: black;
+
+            /* somehow centers this fixed element */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        a:link{
+            color: var(--my-red);
+            text-decoration: none;
+        }
+
+        a:visited{
+            color: var(--my-red);
+        }
+
+        a:hover{
+            color: var(--link-hover)
+        }
+
+        a:active{
+            color: var(--my-red);
+        }
+
+        ul{
+            list-style-type: circle;
+        }
+
+        @media(max-width: 1100px){
+            main{
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+
+
+                grid-template-areas: 
+                "- top top top"
+                "mid mid mid o "
+                "x bot bot bot";
+
+                min-height: 500px;
+
+            }
+
+            h1{font-size: 5vw;}
+
+            h3{font-size: 3vw;}
+
+            .sub-heading-text{font-size: 2.25vw;}
+
+            .body-text{font-size: 1.7vw;}
+        }
+
+        @media(max-width: 700px){
+            main{
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+
+
+                grid-template-areas: 
+                "top"
+                "mid"
+                "bot";
+
+                min-height: 550px;
+
+            }
+
+            h1{font-size: 5vw;}
+
+            h3{font-size: 3vw;}
+
+            .sub-heading-text{font-size: 2.5vw;}
+
+            .body-text{font-size: 1.75vw;}
+        }
+
+
+
+
+    </style>
+
+    <body>
+
+        <div id="side-left" class="sides"></div>
+
+        <div id="side-right" class="sides"></div>
+
+        <div id="centre-col">
+
+            <header>
+                <div id="toptext">
+                    <div class="headingcontainer">
+                        <h1 class="headings">Hi! I'm</h1>
+                        <h1 class="headings red-text">Marc Stanley</h1>
+                        <h3 class="headings blank-text" style="font-family: 'Montserrat', sans-serif">coding enthusiast, beginner web-dev</h3>
+                    </div>
+                </div>
+                <div id="topprofile">
+                    <img id="my-img" src="me-gray.png" alt="me">                    
+                </div>
+            </header>
+
+            <main>
+                <div id="pers-backg" class="info-container">
+                    <h3 class="red-text sub-heading-text">Personal Background:</h3>
+                    <ul class="blank-text body-text">
+                        <li>Born in the middle of <a href="https://goo.gl/maps/8oWkehVbHYJVY6xU9" target="_blank"> nowhere </a> (no offense to my Bengali friends)</li>
+                        <li>Stayed in a bunch of different places before moving to Bangalore</li>
+                        <li>Lived in Bangalore for 8 years</li>
+                        <li>Still don't speak Kannada (average Bangalorean)</li>
+                    </ul>
+                </div>
+
+                <div id="pers-edu" class="info-container">
+                    <h3 class="red-text sub-heading-text">Education:</h3>
+                    <ul class="blank-text body-text">
+                        <li>Mainly all CBSE schools</li>
+                        <li>Last studied at: <a href="https://npsypr.edu.in/" target="_blank"> NPS YPR, BLR</a></li>
+                        <li>Least impressive "Best Outgoing Student" awardee</li>
+                        <li>Compere for various school events</li>
+                    </ul>
+                </div>
+
+                <div id="pers-int" class="info-container">
+                    <h3 class="red-text sub-heading-text">Interests:</h3>
+                    <ul class="blank-text body-text">
+                        <li>Learning coding</li>
+                        <li><s>Hating JS</s></li>
+                        <li>Graphic Design</li>
+                        <li>Cooking</li>
+                        <li>Listening to music, anything from old school rock to anime openings (just no KPop pls)</li>
+                    </ul>
+                </div>
+            </main>
+
+            
+
+        </div>
+
+        
+
+    </body>
+
+</html>
